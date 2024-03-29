@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { fileURLToPath } from "url";
 import path from "path";
+import "./src/database/database.js";
 
 const app = express();
 
