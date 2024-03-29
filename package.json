@@ -1,0 +1,14 @@
+{
+  "name": "backendproyectofinal",
+  "version": "1.0.0",
+  "description": "Backend de sistema de gestion de hotel",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon --exec node index.js"
+  },
+  "keywords": [],
+  "author": "Grupo 4",
+  "license": "ISC"
+}
