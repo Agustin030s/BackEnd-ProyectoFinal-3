@@ -54,7 +54,7 @@ y finalmente
 
 <h5>¡Listo! Ahora el proyecto estará en funcionamiento y podrás acceder a él desde tu navegador para comenzar a trabajar.</h5>
 
-## <b> Vamos a contactarnos..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
+## <b> Ver mas proyectos de los integrantes..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
 <br>
 <div align='left'>
 
