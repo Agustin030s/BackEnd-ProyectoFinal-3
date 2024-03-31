@@ -53,3 +53,41 @@ y finalmente
 `$ npm run dev`
 
 <h5>¡Listo! Ahora el proyecto estará en funcionamiento y podrás acceder a él desde tu navegador para comenzar a trabajar.</h5>
+
+## <b> Vamos a contactarnos..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
+<br>
+<div align='left'>
+
+<ul>
+
+<li>
+<a href="https://github.com/Lucianocabelloo" target="_blank">
+<img src="https://img.shields.io/badge/GitHub: Lucianocabelloo-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
+</a>
+</li>
+
+<br>
+
+<li>
+<a href="https://github.com/nicoiosa" target="_blank">
+<img src="https://img.shields.io/badge/GitHub: nicoiosa-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
+</a>
+</li>
+
+<br>
+
+<li>
+<a href="https://github.com/MartinCCornejo" target="_blank">
+<img src="https://img.shields.io/badge/GitHub: MartinCCornejo-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
+</a>
+</li>
+<br>
+
+<li>
+<a href="https://github.com/Agustin030s" target="_blank">
+<img src="https://img.shields.io/badge/GitHub: Agustin030s-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
+</a>
+</li>
+	
+</ul>
+</div>
