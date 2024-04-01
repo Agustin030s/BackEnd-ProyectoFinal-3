@@ -16,7 +16,7 @@ export const createRoom = async (req, res) => {
   }
 };
 
-export const getRooms = async (res, req) => {
+export const getRooms = async (req, res) => {
   try {
     const rooms = await Room.find();
     res.status(200).json(rooms);
@@ -28,7 +28,7 @@ export const getRooms = async (res, req) => {
   }
 };
 
-export const getRoomById = async (res, req) => {
+export const getRoomById = async (req, res) => {
   try {
     const id = req.params.id;
     const searchRoom = await Room.findById(id);
