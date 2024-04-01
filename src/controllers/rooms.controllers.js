@@ -2,9 +2,9 @@ import Room from "../database/models/room.js";
 
 export const createRoom = async (req, res) => {
   try {
-    const habitacionNueva = new Room(req.body);
+    const newRoom = new Room(req.body);
 
-    await habitacionNueva.save();
+    await newRoom.save();
     res.status(201).json({
       mensaje: "Habitación creada con éxito",
     });
