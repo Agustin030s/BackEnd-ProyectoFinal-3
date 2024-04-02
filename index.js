@@ -5,7 +5,8 @@ import morgan from "morgan";
 import { fileURLToPath } from "url";
 import path from "path";
 import "./src/database/database.js";
-import roomRouter from "./src/routes/rooms.routes.js";
+import roomRouter from "./src/routes/rooms.routes.js"
+import userRouter from "./src/routes/users.routes.js"
 
 const app = express();
 
@@ -25,4 +26,5 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use("/api", roomRouter);
+app.use('/api', roomRouter);
+app.use('/api', userRouter);
