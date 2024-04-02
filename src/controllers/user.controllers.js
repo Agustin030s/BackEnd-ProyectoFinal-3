@@ -85,3 +85,25 @@ export const editUser = async (req , res) =>{
   }
 }
 
+export const deleteUser = async (req, res) =>{
+  try {
+    const id = req.params.id
+    const searchedUser = await User.findById(id)
+
+    if (!searchedUser) {
+      return res.status(404).json({
+        message: "No se encontro el usuario buscado"
+      })
+    }
+
+    await User.findByIdAndDelete(id);
+    res.status(200).json({
+      message: "El usuario fue borrado correctamente"
+    })
+  } catch (error) {
+    console.error(`El siguiente error ocurrio al buscar el usaruio: ${error}`)
+    res.status(500).json({
+      message: "Ocurrio un error al borrar la habitacion",
+    });
+  }
+}
