@@ -2,7 +2,7 @@ import User from "../database/models/user.js";
 import bcrypt from "bcrypt";
 import generateJWT from "../helpers/generateJWT.js";
 
-export const crearUsuario = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const usuarioBuscado = await User.findOne({ email });
@@ -59,3 +59,29 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const editUser = async (req , res) =>{
+  try {
+    const id = req.params.id
+    const body = req.body
+
+    const searchedUser = await User.findById(id)
+    if(! searchedUser){
+      return res.status(404).json({
+        message: "No se encontro el usuario buscado para editar"
+      })
+    }
+
+    await User.findByIdAndUpdate(id, body);
+    res.status(200).json({
+      message: "El usuario fue modificado correctamente"
+    })
+
+  } catch (error) {
+    `El siquiente error ocurrio al intentar modificar el usuario: ${error}`
+    res.status(404).json({
+      message: "Ocurrio un error al intentar modificar el usuario"
+    })
+  }
+}
+

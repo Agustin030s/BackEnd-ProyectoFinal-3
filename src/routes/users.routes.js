@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { crearUsuario } from "../controllers/user.controllers.js";
+import { createUser, editUser } from "../controllers/user.controllers.js";
 import userValidation from "../helpers/userValidation.js";
 
 const router = Router();
 
-router.route('/nuevo').post([userValidation],crearUsuario);
+router.route('/nuevo').post([userValidation], createUser);
+router.route('/nuevo/:id').put(editUser)
 
 export default router;

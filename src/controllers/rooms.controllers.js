@@ -6,12 +6,12 @@ export const createRoom = async (req, res) => {
 
     await newRoom.save();
     res.status(201).json({
-      mensaje: "Habitación creada con éxito",
+      message: "Habitación creada con éxito",
     });
   } catch (error) {
     console.log(error);
     res.status(400).json({
-      mensaje: "Ocurrio un error al crear la habitación",
+      message: "Ocurrio un error al crear la habitación",
     });
   }
 };
@@ -23,7 +23,7 @@ export const getRooms = async (req, res) => {
   } catch (error) {
     console.error("Ha habido un error al listar las habitaciones:", error);
     res.status(404).json({
-      mensaje: "No se pudo obtener la lista de habitaciones",
+      message: "No se pudo obtener la lista de habitaciones",
     });
   }
 };
@@ -36,7 +36,7 @@ export const getRoomById = async (req, res) => {
   } catch (error) {
     console.error("Ha habido un error al buscar el cuarto:", error);
     res.status(404).json({
-      mensaje: "No se ha encontrado la habitacion esa id",
+      message: "No se ha encontrado la habitacion esa id",
     });
   }
 };
