@@ -7,4 +7,5 @@ const validationResult = (req, res, next) => {
   }
   next();
 };
+
 export default validationResult;
