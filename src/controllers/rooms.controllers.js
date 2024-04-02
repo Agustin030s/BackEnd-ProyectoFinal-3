@@ -1,6 +1,22 @@
 import Room from "../database/models/room.js";
 
-export const getRooms = async (res, req) => {
+export const createRoom = async (req, res) => {
+  try {
+    const newRoom = new Room(req.body);
+
+    await newRoom.save();
+    res.status(201).json({
+      mensaje: "Habitación creada con éxito",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({
+      mensaje: "Ocurrio un error al crear la habitación",
+    });
+  }
+};
+
+export const getRooms = async (req, res) => {
   try {
     const rooms = await Room.find();
     res.status(200).json(rooms);
@@ -12,7 +28,7 @@ export const getRooms = async (res, req) => {
   }
 };
 
-export const getRoomById = async (res, req) => {
+export const getRoomById = async (req, res) => {
   try {
     const id = req.params.id;
     const searchRoom = await Room.findById(id);
@@ -25,7 +41,7 @@ export const getRoomById = async (res, req) => {
   }
 };
 
-export const editRoom = async (res, req) => {
+export const editRoom = async (req, res) => {
   try {
     const id = req.params.id;
     const body = req.body;
@@ -44,7 +60,6 @@ export const editRoom = async (res, req) => {
       `El siquiente error ocurrio al intentar modificar la habitacion: ${error}`
     );
     res.status(404).json({
-      mensaje: "Ocurrio un error al intentar modificar la habitacion",
-    });
+      mensaje: "Ocurrio un error al intentar modificar la habitacion"});
   }
 };

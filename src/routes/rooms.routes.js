@@ -1,9 +1,13 @@
 import { Router } from "express";
+import {
+  createRoom,
+  getRoomById,
+  getRooms,
+} from "../controllers/rooms.controllers.js";
 
-const router = Router()
+const router = Router();
 
-router.route("/rooms").get()
-router.route("/rooms/:id").get()
+router.route("/rooms").post(createRoom).get(getRooms);
+router.route("/rooms/:id").get(getRoomById);
 
-
-export default router
+export default router;
