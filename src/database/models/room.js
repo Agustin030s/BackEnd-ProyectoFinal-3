@@ -28,7 +28,7 @@ const roomSchema = new Schema({
   precio: {
     type: Number,
     required: true,
-    min: 5000,
+    min: 4000,
     max: 500000,
   },
   imagen: {
