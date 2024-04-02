@@ -41,7 +41,7 @@ const roomValidation = [
     .isNumeric()
     .withMessage("El precio tiene que ser un valor numerico")
     .custom((value) => {
-      if (value >= 5000 && value <= 500000) {
+      if (value >= 4000 && value <= 500000) {
         return true;
       } else {
         throw new Error("El precio debe estar entre $5000 y $500000");
@@ -61,4 +61,5 @@ const roomValidation = [
     .withMessage("La disponibilidad tiene que ser un valor de fecha"),
   (req, res, next) => validationResult(req, res, next),
 ];
+
 export default roomValidation;
