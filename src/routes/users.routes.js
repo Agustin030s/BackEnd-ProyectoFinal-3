@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { crearUsuario, obtenerUsuarios } from "../controllers/user.controllers.js";
+import { crearUsuario, obtenerUsuarios, getUserByEmail } from "../controllers/user.controllers.js";
+import userValidation from "../helpers/userValidation.js";
+
 const router = Router();
 
-router.route('/nuevo').post(crearUsuario);
-router.route('/').get(obtenerUsuarios)
+router.route("/").get(getUserByEmail, obtenerUsuarios);
+router.route('/nuevo').post([userValidation],crearUsuario);
 
 export default router;
