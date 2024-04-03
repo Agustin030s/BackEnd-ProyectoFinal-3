@@ -3,10 +3,11 @@ import {
   crearUsuario,
   getUserByEmail,
 } from "../controllers/user.controllers.js";
+import userValidation from "../helpers/userValidation.js";
 
 const router = Router();
 
-router.route("/nuevo").post(crearUsuario);
 router.route("/").get(getUserByEmail);
+router.route('/nuevo').post([userValidation],crearUsuario);
 
 export default router;
