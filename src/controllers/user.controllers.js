@@ -129,10 +129,10 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-export const obtenerUsuarios = async (req, res) => {
+export const getUsers = async (req, res) => {
   try {
-    const usuarios = await User.find();
-    res.status(200).json(usuarios);
+    const users = await User.find();
+    res.status(200).json(users);
   } catch (error) {
     console.log(error);
     res.status(404).json({
@@ -140,3 +140,17 @@ export const obtenerUsuarios = async (req, res) => {
     });
   }
 };
+
+export const getUserByID = async (req,res) => {
+    try {
+        const id = req.params.id;
+        const searchUser = await User.findById(id);
+        res.status(200).json(searchUser);
+        
+    } catch (error) {
+        console.error("Ha ocurrido un error al encontrar el usuario: ", error);
+        res.status(404).json({
+            message: "No se encontro un usuario con ese id"
+        });
+    }
+} 
