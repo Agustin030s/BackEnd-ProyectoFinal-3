@@ -38,19 +38,13 @@ export const getUserByEmail = async (req, res) => {
     );
     res.status(404).json({
       message: "No se encontró el usuario con ese email",
-    }
+    });
     const usuarioNuevo = new User(req.body);
-    // Encriptar la contraseña
     const salt = bcrypt.genSaltSync(10);
     usuarioNuevo.password = bcrypt.hashSync(password, salt);
     await usuarioNuevo.save();
     res.status(201).json({
       message: "Usuario dado de alta exitosamente",
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({
-      message: "El usuario no pudo ser dado de alta",
     });
   }
 };
@@ -88,62 +82,61 @@ export const login = async (req, res) => {
   }
 };
 
-export const editUser = async (req , res) =>{
+export const editUser = async (req, res) => {
   try {
-    const id = req.params.id
-    const body = req.body
+    const id = req.params.id;
+    const body = req.body;
 
-    const searchedUser = await User.findById(id)
-    if(! searchedUser){
+    const searchedUser = await User.findById(id);
+    if (!searchedUser) {
       return res.status(404).json({
-        message: "No se encontro el usuario buscado para editar"
-      })
+        message: "No se encontro el usuario buscado para editar",
+      });
     }
 
     await User.findByIdAndUpdate(id, body);
     res.status(200).json({
-      message: "El usuario fue modificado correctamente"
-    })
-
+      message: "El usuario fue modificado correctamente",
+    });
   } catch (error) {
-    `El siquiente error ocurrio al intentar modificar el usuario: ${error}`
+    `El siquiente error ocurrio al intentar modificar el usuario: ${error}`;
     res.status(404).json({
-      message: "Ocurrio un error al intentar modificar el usuario"
-    })
+      message: "Ocurrio un error al intentar modificar el usuario",
+    });
   }
-}
+};
 
-export const deleteUser = async (req, res) =>{
+export const deleteUser = async (req, res) => {
   try {
-    const id = req.params.id
-    const searchedUser = await User.findById(id)
+    const id = req.params.id;
+    const searchedUser = await User.findById(id);
 
     if (!searchedUser) {
       return res.status(404).json({
-        message: "No se encontro el usuario buscado"
-      })
+        message: "No se encontro el usuario buscado",
+      });
     }
 
     await User.findByIdAndDelete(id);
     res.status(200).json({
-      message: "El usuario fue borrado correctamente"
-    })
+      message: "El usuario fue borrado correctamente",
+    });
   } catch (error) {
-    console.error(`El siguiente error ocurrio al buscar el usaruio: ${error}`)
+    console.error(`El siguiente error ocurrio al buscar el usaruio: ${error}`);
     res.status(500).json({
       message: "Ocurrio un error al borrar la habitacion",
     });
   }
-}
+};
 
 export const obtenerUsuarios = async (req, res) => {
-    try {
-      const usuarios = await User.find();
-      res.status(200).json(usuarios);
-    } catch (error) {
-      console.log(error);
-      res.status(404).json({
-        message: "no se pudo encontrar los usuarios",
-      });
-    }
+  try {
+    const usuarios = await User.find();
+    res.status(200).json(usuarios);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      message: "no se pudo encontrar los usuarios",
+    });
+  }
 };
