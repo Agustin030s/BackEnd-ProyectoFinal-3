@@ -1,93 +1,26 @@
-<h1 align="center"> Paradise Hotel Resort BACKEND </h1>
+# Paradise Hotel Resort 🏨🌴
 
-###
+En el mundo de la hospitalidad, cada detalle cuenta. Nuestro proyecto de backend, construido con Express y Node.js, es el motor detrás de una experiencia hotelera sin igual. Desde la reserva de habitaciones hasta el servicio personalizado, nuestro sistema se asegura de que cada huésped se sumerja en una experiencia excepcional. Con una arquitectura robusta y eficiente, facilitamos la gestión de reservas y la comunicación fluida entre el personal y los huéspedes. Bienvenido a un viaje donde la comodidad y la excelencia se unen, gracias a nuestra plataforma de backend que impulsa la magia detrás de cada estancia inolvidable.
 
-<hr>
+## Caracteristicas del proyecto ⚙️
+### Funcionalidades 🛠️
+- **Control de Habitaciones**: Descubre las rutas diseñadas para facilitar la creación, modificación, obtención y eliminación de habitaciones en el hotel, asegurando un manejo eficiente de los recursos disponibles.
+- **Control de Reservas**: Accede a las rutas dedicadas a la realización y cancelación de reservas de habitaciones, garantizando un proceso fluido y transparente para nuestros huéspedes.
+- **Control de Usuarios**: Explora las rutas destinadas al registro, edición, obtención, inicio de sesión y eliminación de usuarios de la plataforma, proporcionando una experiencia integral y segura para nuestros clientes.
+- **Validaciones**:  Las rutas para crear, editar y eliminar recursos están protegidas mediante robustas validaciones implementadas con Json Web Token y Express Validator, asegurando la integridad y seguridad de los datos en todo momento.
 
-## 👩‍💻 Sobre Nosotros
+### Administración de datos 📦
+En el contexto de la administración de datos, aprovechamos la siguiente herramienta:
+- **MongoDb Atlas**: Nuestra elección recae en MongoDB debido a su naturaleza como base de datos en la nube. Esta solución nos permite ejecutar consultas de manera eficiente y fluida, garantizando un funcionamiento sin contratiempos. Con MongoDB Atlas, tenemos la capacidad de gestionar nuestros datos de manera escalable y segura, respaldados por las características y la fiabilidad que ofrece esta plataforma en la nube.
 
-<p>Somos un grupo apasionado de profesionales compuesto por Cornejo Martin, Nicolas Iosa, Maza Agustin y Luciano Cabello, todos especializados como desarrolladores Full Stack. Nos encanta crear proyectos web que no solo sean atractivos visualmente, sino también altamente interactivos y funcionales.</p>
+### Librerias 📚
+- [Node Js](https://nodejs.org/en): Un entorno de ejecución de JavaScript en el servidor, diseñado para construir aplicaciones escalables y de alta performance.
+- [Nodemon](https://nodemon.io/): Una utilidad que monitorea los cambios en los archivos de un proyecto Node.js y automáticamente reinicia la aplicación.
+- [Express](https://expressjs.com/es/starter/installing.html): Un framework de aplicaciones web para Node.js que proporciona una serie de características para facilitar la creación de aplicaciones web y APIs robustas y eficientes.
+- [Mongoose](https://mongoosejs.com/): 
+- [Express Validator](https://express-validator.github.io/docs/):
+- [Bcrypt](https://www.npmjs.com/package/bcrypt): 
+- [Middleware Cors](https://github.com/expressjs/cors#readme):
+- [Middleware Morgan](https://github.com/expressjs/morgan):
+- [Json Web Token](https://jwt.io/): 
 
-###
-
-<p align="left">-📍 Somos de Tucuman, Argentina.<br>
-<br>-🔭En este proyecto, nos enfocaremos en desarrollar un sistema de gestión para el Paradise Hotel Resort utilizando la tecnología Stack MERN (MongoDB, Express, React y Node.js). Este sistema nos permitirá administrar eficientemente todas las operaciones y servicios dentro del hotel, garantizando una experiencia fluida tanto para el personal como para los huéspedes<br></p>
-
-###
-
-<hr>
-
-<h3 align="left">🛠 Language and tools</h3>
-
-<div>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
-<img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">
-<img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white">
-<img src="https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white">
-<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
-<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white">
-<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
-</div>
-
-<hr>
-
-## Instalación ⚙️
-
-<p>Para correr el proyecto primero se clonara </p>
-
-`$ git clone "url"`
-
-Luego nos colocaremos en la carpeta del archivo
-
-`$ cd "carpeta"`
-
-Una vez posicionados haremos para instalar todas las dependencias
-
-`$ npm install`
-
-y finalmente 
-
-`$ npm run dev`
-
-<h5>¡Listo! Ahora el proyecto estará en funcionamiento y podrás acceder a él desde tu navegador para comenzar a trabajar.</h5>
-
-## <b> Ver mas proyectos de los integrantes..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
-<br>
-<div align='left'>
-
-<ul>
-
-<li>
-<a href="https://github.com/Lucianocabelloo" target="_blank">
-<img src="https://img.shields.io/badge/GitHub: Lucianocabelloo-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
-</a>
-</li>
-
-<br>
-
-<li>
-<a href="https://github.com/nicoiosa" target="_blank">
-<img src="https://img.shields.io/badge/GitHub: nicoiosa-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
-</a>
-</li>
-
-<br>
-
-<li>
-<a href="https://github.com/MartinCCornejo" target="_blank">
-<img src="https://img.shields.io/badge/GitHub: MartinCCornejo-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
-</a>
-</li>
-<br>
-
-<li>
-<a href="https://github.com/Agustin030s" target="_blank">
-<img src="https://img.shields.io/badge/GitHub: Agustin030s-100000?style=for-the-badge&logo=github&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
-</a>
-</li>
-	
-</ul>
-</div>
