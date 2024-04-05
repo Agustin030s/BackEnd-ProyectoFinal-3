@@ -7,6 +7,7 @@ import path from "path";
 import "./src/database/database.js";
 import roomRouter from "./src/routes/rooms.routes.js"
 import userRouter from "./src/routes/users.routes.js"
+import reservationRouter from "./src/routes/reservations.routes.js"
 
 const app = express();
 
@@ -28,3 +29,4 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use('/api', roomRouter);
 app.use('/api/user', userRouter);
+app.use("/api/reservation")
