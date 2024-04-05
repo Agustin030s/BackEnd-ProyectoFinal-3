@@ -29,4 +29,4 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.use('/api', roomRouter);
 app.use('/api/user', userRouter);
-app.use("/api/reservation")
+app.use("/api/reservation", reservationRouter)
