@@ -39,13 +39,6 @@ export const getUserByEmail = async (req, res) => {
     res.status(404).json({
       message: "No se encontró el usuario con ese email",
     });
-    const usuarioNuevo = new User(req.body);
-    const salt = bcrypt.genSaltSync(10);
-    usuarioNuevo.password = bcrypt.hashSync(password, salt);
-    await usuarioNuevo.save();
-    res.status(201).json({
-      message: "Usuario dado de alta exitosamente",
-    });
   }
 };
 
@@ -141,16 +134,15 @@ export const getUsers = async (req, res) => {
   }
 };
 
-export const getUserByID = async (req,res) => {
-    try {
-        const id = req.params.id;
-        const searchUser = await User.findById(id);
-        res.status(200).json(searchUser);
-        
-    } catch (error) {
-        console.error("Ha ocurrido un error al encontrar el usuario: ", error);
-        res.status(404).json({
-            message: "No se encontro un usuario con ese id"
-        });
-    }
-} 
+export const getUserByID = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const searchUser = await User.findById(id);
+    res.status(200).json(searchUser);
+  } catch (error) {
+    console.error("Ha ocurrido un error al encontrar el usuario: ", error);
+    res.status(404).json({
+      message: "No se encontro un usuario con ese id",
+    });
+  }
+};
