@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import validationResult from "./validationResult.js";
+import validationResultFunction from "./validationResult.js";
 
 const userValidation = [
   check("nombreCompleto")
@@ -32,6 +32,6 @@ const userValidation = [
     .withMessage(
       "El rol debe ser uno de las siguiente opciones: Administrador, Usuario"
     ),
-  (req, res, next) => validationResult(req, res, next),
+  (req, res, next) => validationResultFunction(req, res, next),
 ];
 export default userValidation;
