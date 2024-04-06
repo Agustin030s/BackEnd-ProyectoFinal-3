@@ -44,8 +44,8 @@ const reservationSchema = new Schema({
     required: true,
   },
   numHabitacion: {
-    type: Schema.ObjectId,
-    ref: "room",
+    type: Number,
+    required: true
   },
 });
 

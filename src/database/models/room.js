@@ -44,7 +44,7 @@ const roomSchema = new Schema({
     },
   },
   disponibilidad: {
-    type: Date,
+    type: Boolean,
     required: true,
   },
 });
