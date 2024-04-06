@@ -10,15 +10,11 @@ const reservationSchema = new Schema({
   dni: {
     type: Number,
     required: true,
-    min: 8,
-    max: 10,
     unique: true,
   },
   telefono: {
     type: Number,
     required: true,
-    min: 9,
-    max: 15,
   },
   email: {
     type: String,

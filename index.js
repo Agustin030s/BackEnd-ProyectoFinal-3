@@ -5,9 +5,9 @@ import morgan from "morgan";
 import { fileURLToPath } from "url";
 import path from "path";
 import "./src/database/database.js";
-import roomRouter from "./src/routes/rooms.routes.js"
-import userRouter from "./src/routes/users.routes.js"
-import reservationRouter from "./src/routes/reservations.routes.js"
+import roomRouter from "./src/routes/rooms.routes.js";
+import userRouter from "./src/routes/users.routes.js";
+import reservationRouter from "./src/routes/reservations.routes.js";
 
 const app = express();
 
@@ -27,6 +27,6 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.use('/api', roomRouter);
-app.use('/api/user', userRouter);
-app.use("/api/reservation", reservationRouter)
+app.use("/api", roomRouter);
+app.use("/api/user", userRouter);
+app.use("/api", reservationRouter);

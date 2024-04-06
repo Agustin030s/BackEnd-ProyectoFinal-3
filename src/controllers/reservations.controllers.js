@@ -4,12 +4,32 @@ import Room from "../database/models/room.js";
 export const reserveRoom = async (req, res) => {
   try {
     const { numHabitacion, fechaInicio, fechaFin } = req.body;
+
     const room = await Room.findOne({ numero: numHabitacion });
 
-    if (!room) res.status(404).json({ mensaje: "Habitación no encontrada" });
+    if (!room)
+      return res.status(404).json({ mensaje: "Habitación no encontrada" });
 
     if (!room.disponibilidad)
-      res.status(400).json({ mensaje: "La habitación no esta disponible" });
+      return res
+        .status(400)
+        .json({ mensaje: "La habitación no esta disponible" });
+
+    const currentDate = new Date();
+    const initReserve = new Date(fechaInicio);
+    const finishReserve = new Date(fechaFin);
+
+    if (initReserve < currentDate)
+      return res.status(400).json({
+        mensaje:
+          "La fecha de inicio de la reserva no puede ser menor a la fecha actual",
+      });
+
+    if (finishReserve <= initReserve)
+      return res.status(400).json({
+        mensaje:
+          "La fecha de fin no puede ser menor o igual a la fecha de inicio",
+      });
 
     // Verificar si hay reservas que se solapen con las fechas solicitadas
     const overlappingReservation = await Reservation.findOne({
@@ -34,6 +54,25 @@ export const reserveRoom = async (req, res) => {
     console.error(error);
     res.status(500).json({
       mensaje: "Error al realizar la reserva",
+    });
+  }
+};
+
+export const getReservationForARoom = async (req, res) => {
+  try {
+    const numero = req.params.numero;
+    const reservations = await Reservation.find({ numHabitacion: numero });
+
+    if (reservations.length === 0)
+      return res
+        .status(200)
+        .json({ mensaje: "La habitación no tiene reservas" });
+
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error(error);
+    res.status(404).json({
+      mensaje: "No se pudo obtener las reservas",
     });
   }
 };

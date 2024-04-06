@@ -1,5 +1,6 @@
 import { check } from "express-validator";
 import validationResult from "./validationResult.js";
+import Room from "../database/models/room.js";
 
 const roomValidation = [
   check("numero")
@@ -7,6 +8,13 @@ const roomValidation = [
     .withMessage("El numero de habitacion es un dato obligatorio")
     .isNumeric()
     .withMessage("El numero de habitacion tiene que ser un valor numerico")
+    .custom(async (value) => {
+      const existingRoom = await Room.findOne({ numero: value });
+      if (existingRoom) {
+        throw new Error("El número de habitación ya está en uso");
+      }
+      return true;
+    })
     .custom((value) => {
       if (value >= 1 && value <= 30) {
         return true;
@@ -57,8 +65,8 @@ const roomValidation = [
   check("disponibilidad")
     .notEmpty()
     .withMessage("La disponibilad es un dato obligatorio")
-    .isDate()
-    .withMessage("La disponibilidad tiene que ser un valor de fecha"),
+    .isBoolean()
+    .withMessage("La disponibilidad tiene que ser un valor booleano"),
   (req, res, next) => validationResult(req, res, next),
 ];
 
