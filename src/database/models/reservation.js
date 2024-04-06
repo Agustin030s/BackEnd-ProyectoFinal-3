@@ -41,7 +41,9 @@ const reservationSchema = new Schema({
   },
   numHabitacion: {
     type: Number,
-    required: true
+    min: 1,
+    max: 30,
+    required: true,
   },
 });
 
