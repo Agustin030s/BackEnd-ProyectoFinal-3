@@ -82,6 +82,21 @@ export const deleteReservation = async (req, res) => {
     );
     res.status(500).json({
       message: "Ocurrio un error al borrar la reserva",
+     });
+  }
+};
+
+export const getReservationById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const searchedReservation = await Reservation.findById(id);
+    res.status(200).json(searchedReservation);
+  } catch (error) {
+    console.error(
+      `Los siguientes errores ocurrieron al intentar buscar la reserva: ${error}`
+    );
+    res.status(404).json({
+      message: "No se encontro una reserva con ese id",
     });
   }
 };
