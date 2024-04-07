@@ -65,6 +65,27 @@ export const getReservationForARoom = async (req, res) => {
   }
 };
 
+export const deleteReservation = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const searchedReservation = await Reservation.findById(id);
+    if (!searchedReservation) {
+      return res.status(404).json({
+        message: "No se encontro la reserva buscada",
+      });
+    }
+    await Reservation.findByIdAndDelete(id);
+    res.status(200).json({ message: "La reserva fue borrada correctamente" });
+  } catch (error) {
+    console.error(
+      `El siguiente error ocurrio al intentar borrar la reserva: ${error}`
+    );
+    res.status(500).json({
+      message: "Ocurrio un error al borrar la reserva",
+     });
+  }
+};
+
 export const getReservationById = async (req, res) => {
   try {
     const id = req.params.id;
