@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import validationResult from "./validationResult.js";
+import validationResultFunction from "./validationResult.js";
 import Room from "../database/models/room.js";
 
 const roomValidation = [
@@ -67,7 +67,7 @@ const roomValidation = [
     .withMessage("La disponibilad es un dato obligatorio")
     .isBoolean()
     .withMessage("La disponibilidad tiene que ser un valor booleano"),
-  (req, res, next) => validationResult(req, res, next),
+  (req, res, next) => validationResultFunction(req, res, next),
 ];
 
 export default roomValidation;
