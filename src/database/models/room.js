@@ -25,6 +25,12 @@ const roomSchema = new Schema({
       "Penthouse Suite",
     ],
   },
+  descripcion: {
+    type: String,
+    required: true,
+    minLength: 10,
+    maxLength: 350,
+  },
   precio: {
     type: Number,
     required: true,

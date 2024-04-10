@@ -13,7 +13,7 @@ const router = Router();
 
 router
   .route("/rooms")
-  .post([roomValidation], createRoom)
+  .post([JWTValidation, roomValidation], createRoom)
   .get(getRooms);
 router
   .route("/rooms/:id")

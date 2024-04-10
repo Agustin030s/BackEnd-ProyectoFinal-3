@@ -7,6 +7,11 @@ const userSchema = new Schema({
     minLength: 3,
     maxLength: 80,
   },
+  dni: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,

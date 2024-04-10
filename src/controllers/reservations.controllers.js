@@ -24,7 +24,7 @@ export const reserveRoom = async (req, res) => {
         mensaje:
           "La fecha de fin no puede ser menor o igual a la fecha de inicio",
       });
-    // Verificar si hay reservas que se solapen con las fechas solicitadas
+
     const overlappingReservation = await Reservation.findOne({
       numHabitacion,
       fechaInicio: { $lte: fechaFin },
@@ -82,7 +82,7 @@ export const deleteReservation = async (req, res) => {
     );
     res.status(500).json({
       message: "Ocurrio un error al borrar la reserva",
-     });
+    });
   }
 };
 
