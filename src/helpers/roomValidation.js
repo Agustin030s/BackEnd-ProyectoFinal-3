@@ -43,6 +43,11 @@ const roomValidation = [
     .withMessage(
       "La categoria debe ser una de las siguiente opciones: Standard, Deluxe, Ejecutiva, Suite, Presidencial, and Penthouse Suite"
     ),
+  check("descripcion")
+    .notEmpty()
+    .withMessage("La descripción es obligatoria")
+    .isLength({ min: 10, max: 350 })
+    .withMessage("La descripción debe tener entre 10 y 350 caracteres"),
   check("precio")
     .notEmpty()
     .withMessage("El precio es un dato obligatorio")
