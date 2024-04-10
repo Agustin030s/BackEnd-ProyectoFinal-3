@@ -70,7 +70,9 @@ Para la correcta ejecución del proyecto segui los siguientes pasos:
 
 3. Ya dentro de VSC abre una terminal, es muy importante verificar en la terminal que te encuentras posicionado en la carpeta del proyecto, luego de verificar ejecuta el siguiente comando para instalar todas las dependencias del proyecto:
 
-    ```npm install```
+    ```
+    npm install
+    ```
 
 4. Luego de esto, en la raiz del proyecto deberas crear un archivo para las variables de entorno, que se llamara ".env" y colocaras las siguientes variables: 
 

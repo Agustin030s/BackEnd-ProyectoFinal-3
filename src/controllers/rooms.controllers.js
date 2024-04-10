@@ -41,6 +41,19 @@ export const getRoomById = async (req, res) => {
   }
 };
 
+export const getRoomByCategory = async (req, res) => {
+  try {
+    const category = req.params.categoria;
+    const rooms = await Room.find({ categoria: category });
+    res.status(200).json(rooms);
+  } catch (error) {
+    console.error("Ha habido un error al listar las habitaciones:", error);
+    res.status(404).json({
+      message: "No se han podido obtener las habitaciones",
+    });
+  }
+};
+
 export const editRoom = async (req, res) => {
   try {
     const id = req.params.id;
@@ -51,7 +64,7 @@ export const editRoom = async (req, res) => {
         message: "No se encontro la habitacion buscada",
       });
     }
-    
+
     await Room.findByIdAndUpdate(id, body);
     res
       .status(200)
@@ -61,7 +74,8 @@ export const editRoom = async (req, res) => {
       `El siquiente error ocurrio al intentar modificar la habitacion: ${error}`
     );
     res.status(404).json({
-      mensaje: "Ocurrio un error al intentar modificar la habitacion"});
+      mensaje: "Ocurrio un error al intentar modificar la habitacion",
+    });
   }
 };
 

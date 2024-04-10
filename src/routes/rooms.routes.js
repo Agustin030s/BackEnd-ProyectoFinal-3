@@ -3,6 +3,7 @@ import {
   createRoom,
   deleteRoom,
   editRoom,
+  getRoomByCategory,
   getRoomById,
   getRooms,
 } from "../controllers/rooms.controllers.js";
@@ -20,5 +21,7 @@ router
   .get(getRoomById)
   .put([JWTValidation, roomValidation], editRoom)
   .delete(deleteRoom);
+
+router.route("/rooms/:categoria").get(getRoomByCategory);
 
 export default router;
