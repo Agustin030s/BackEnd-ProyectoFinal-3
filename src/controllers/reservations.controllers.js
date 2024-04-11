@@ -48,6 +48,18 @@ export const reserveRoom = async (req, res) => {
   }
 };
 
+export const getReservations = async (req, res) => {
+  try {
+    const reservations = await Reservation.find();
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error("Ha habido un error al listar las reservas:", error);
+    res.status(404).json({
+      message: "No se pudo obtener la lista de reservas",
+    });
+  }
+};
+
 export const getReservationForARoom = async (req, res) => {
   try {
     const numero = req.params.numero;

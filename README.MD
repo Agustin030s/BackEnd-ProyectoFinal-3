@@ -37,6 +37,7 @@ En esta sección encontraras como trabajar con las distintas rutas que se encuen
 ```
 GET /rooms
 GET /rooms/:id
+GET /rooms/:categoria
 POST /rooms
 PUT /rooms/:id
 DELETE /rooms/:id
@@ -52,7 +53,11 @@ DELETE /user/:id
 ```
 ### Rutas Reservas 📆
 ```
-PROXIMAMENTE
+GET /reservation
+GET /reservation/:id
+GET /reservation/:numero
+POST /reservation
+DELETE /reservation/:id
 ```
 
 ## Ejecución del proyecto 🚀

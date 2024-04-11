@@ -3,12 +3,13 @@ import {
   deleteReservation,
   getReservationById,
   getReservationForARoom,
+  getReservations,
   reserveRoom,
 } from "../controllers/reservations.controllers.js";
 
 const router = Router();
 
-router.route("/reservation").post(reserveRoom);
+router.route("/reservation").post(reserveRoom).get(getReservations);
 router
   .route("/reservation/:id")
   .get(getReservationById)
