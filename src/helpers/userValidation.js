@@ -7,16 +7,6 @@ const userValidation = [
     .withMessage("El nombre es un dato obligatorio")
     .isLength({ min: 3, max: 80 })
     .withMessage("El nombre debe tener entre 3 y 80 caracteres"),
-  check("dni")
-    .notEmpty()
-    .withMessage("El DNI es un dato obligatorio")
-    .isNumeric()
-    .withMessage("El DNI debe ser un valor numerico")
-    .custom((value) => {
-      const numberAsString = String(value);
-      const numberLength = numberAsString.length;
-      return numberLength >= 7 && numberLength <= 8;
-    }),
   check("email")
     .notEmpty()
     .withMessage("El email es un dato obligatorio")
