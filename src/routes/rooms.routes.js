@@ -20,7 +20,7 @@ router
   .route("/rooms/:id")
   .get(getRoomById)
   .put([JWTValidation, roomValidation], editRoom)
-  .delete(deleteRoom);
+  .delete([JWTValidation], deleteRoom);
 
 router.route("/rooms/:categoria").get(getRoomByCategory);
 

@@ -32,6 +32,11 @@ const userValidation = [
     .withMessage(
       "El rol debe ser uno de las siguiente opciones: Administrador, Usuario"
     ),
+  check("activo")
+    .notEmpty()
+    .withMessage("El atributo activo es un dato obligatorio")
+    .isBoolean()
+    .withMessage("El atributo activo tiene que ser un valor booleano"),
   (req, res, next) => validationResultFunction(req, res, next),
 ];
 export default userValidation;

@@ -31,6 +31,10 @@ const userSchema = new Schema({
     required: true,
     enum: ["Administrador", "Usuario"],
   },
+  activo: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 const User = mongoose.model("user", userSchema);

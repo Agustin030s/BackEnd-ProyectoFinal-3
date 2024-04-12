@@ -44,8 +44,13 @@ export const getUserByEmail = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
-    const searchedUser = await UserActivation.findOne({ email });
+    const { email, password, activo } = req.body;
+    if (!activo) {
+      return res.status(400).json({
+        message: "Usuario suspendido",
+      });
+    }
+    const searchedUser = await User.findOne({ email });
     if (!searchedUser) {
       return res.status(400).json({
         message: "Credenciales incorrectas",
@@ -143,6 +148,35 @@ export const getUserByID = async (req, res) => {
     console.error("Ha ocurrido un error al encontrar el usuario: ", error);
     res.status(404).json({
       message: "No se encontro un usuario con ese id",
+    });
+  }
+};
+
+export const suspendUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { activo } = req.body;
+
+    const searchUser = await User.findById(id);
+
+    if (!searchUser) {
+      return res.status(404).json({
+        message: "No se encontró un usuario con ese ID",
+      });
+    }
+
+    searchUser.activo = activo;
+
+    await searchUser.save();
+    res.status(200).json({
+      message: `El usuario con ID ${id} ha sido ${
+        activo ? "reactivado" : "suspendido"
+      }.`,
+    });
+  } catch (error) {
+    console.error("Ha ocurrido un error al suspender el usuario: ", error);
+    res.status(500).json({
+      message: "Ha ocurrido un error en el servidor",
     });
   }
 };
