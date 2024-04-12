@@ -7,6 +7,7 @@ import {
   editUser,
   login,
   getUserByID,
+  suspendUser,
 } from "../controllers/user.controllers.js";
 import userValidation from "../helpers/userValidation.js";
 import JWTValidation from "../helpers/jwtValidation.js";
@@ -19,7 +20,8 @@ router
   .route("/:id")
   .get(getUserByID)
   .put([JWTValidation, userValidation], editUser)
-  .delete(deleteUser);
+  .delete(deleteUser)
+  .patch(suspendUser);
 router.route("/obtenerEmail").get(getUserByEmail);
 
 export default router;

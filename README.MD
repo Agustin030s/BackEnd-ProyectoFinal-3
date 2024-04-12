@@ -49,6 +49,7 @@ GET /user/obtenerEmail
 POST /user/nuevo
 POST /user
 PUT /user/:id
+PATCH /user/:id
 DELETE /user/:id
 ```
 ### Rutas Reservas 📆
