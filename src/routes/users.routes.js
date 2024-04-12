@@ -20,8 +20,8 @@ router
   .route("/:id")
   .get(getUserByID)
   .put([JWTValidation, userValidation], editUser)
-  .delete(deleteUser)
-  .patch(suspendUser);
+  .delete([JWTValidation], deleteUser)
+  .patch([JWTValidation], suspendUser);
 router.route("/obtenerEmail").get(getUserByEmail);
 
 export default router;
