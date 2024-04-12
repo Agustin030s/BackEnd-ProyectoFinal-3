@@ -44,16 +44,17 @@ export const getUserByEmail = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { email, password, activo } = req.body;
-    if (!activo) {
-      return res.status(400).json({
-        message: "Usuario suspendido",
-      });
-    }
+    const { email, password } = req.body;
+
     const searchedUser = await User.findOne({ email });
     if (!searchedUser) {
       return res.status(400).json({
         message: "Credenciales incorrectas",
+      });
+    }
+    if (!searchedUser.activo) {
+      return res.status(400).json({
+        message: "Usuario suspendido",
       });
     }
     const validPassword = bcrypt.compareSync(password, searchedUser.password);
