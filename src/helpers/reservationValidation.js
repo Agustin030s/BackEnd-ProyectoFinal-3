@@ -12,19 +12,15 @@ const reservationValidation = [
     .withMessage("El DNI es un dato obligatorio")
     .isNumeric()
     .withMessage("El DNI debe ser un valor numerico")
-    .custom((value) => {
-      const numberAsString = String(value);
-      const numberLength = numberAsString.length;
-      return numberLength >= 7 && numberLength <= 8;
-    })
-    .withMessage("El DNI debe tener entre 7 y 8 dígitos"),
+    .isLength({ min: 8, max: 10 })
+    .withMessage("El DNI debe tener entre 8 y 10 dígitos"),
   check("telefono")
     .notEmpty()
     .withMessage("El telefono es un dato obligatorio")
     .isNumeric()
     .withMessage("El telefono debe ser un valor numerico")
-    .isMobilePhone("any")
-    .withMessage("El telefono debe der un numero valido"),
+    .isLength({ min: 7, max: 15 })
+    .withMessage("El telefono debe tener entre 7 y 15 números"),
   check("email")
     .notEmpty()
     .withMessage("El email es un dato obligatorio")
@@ -38,47 +34,19 @@ const reservationValidation = [
     .notEmpty()
     .withMessage("El numero de habitacion es un dato obligatorio")
     .isNumeric()
-    .withMessage("El numero de habitacion tiene que ser un valor numerico")
-    .custom(async (value) => {
-      const existingRoom = await Room.findOne({ numero: value });
-      if (existingRoom) {
-        throw new Error("El número de habitación ya está en uso");
-      }
-      return true;
-    })
-    .custom((value) => {
-      if (value >= 1 && value <= 30) {
-        return true;
-      } else {
-        throw new Error("El numero de habitacion debe estar entre 1 y 30");
-      }
-    }),
+    .withMessage("El numero de habitacion tiene que ser un valor numerico"),
   check("fechaInicio")
     .notEmpty()
     .withMessage("La fecha de inicio es un dato obligatorio")
-    .isDate()
-    .withMessage("La feche de inicio debe ser dormato Date")
-    .custom((value) => {
-      const inputDate = new Date(value);
-      const currentDate = new Date();
-      return inputDate >= currentDate;
-    })
-    .withMessage(
-      "La fecha de inicio debe ser igual o posterior a la fecha actual"
-    ),
+    .isISO8601()
+    .toDate()
+    .withMessage("La feche de inicio debe ser formato Date"),
   check("fechaFin")
     .notEmpty()
     .withMessage("La fecha de fin es un dato obligatorio")
-    .isDate()
-    .withMessage("La feche de fin debe ser dormato Date")
-    .custom((value) => {
-      const inputDate = new Date(value);
-      const currentDate = new Date();
-      return inputDate >= currentDate;
-    })
-    .withMessage(
-      "La fecha de fin debe ser igual o posterior a la fecha actual"
-    ),
+    .isISO8601()
+    .toDate()
+    .withMessage("La feche de fin debe ser formato Date"),
   (req, res, next) => validationResultFunction(req, res, next),
 ];
 

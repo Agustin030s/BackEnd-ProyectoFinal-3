@@ -19,6 +19,6 @@ router
   .route("/reservation/:id")
   .get(getReservationById)
   .delete([JWTValidation], deleteReservation);
-router.route("/reservation/:numero").get(getReservationForARoom);
+router.route("/reservation/forroom/:numero").get(getReservationForARoom);
 
 export default router;
