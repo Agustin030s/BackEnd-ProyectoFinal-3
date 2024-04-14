@@ -35,7 +35,12 @@ export const reserveRoom = async (req, res) => {
         mensaje: "Ya existe una reserva en las fechas seleccionadas",
       });
     }
-    const newReservation = new Reservation(req.body);
+
+    const diffTiempo = Math.abs(finishReserve - initReserve);
+    const diffDias = Math.ceil(diffTiempo / (1000 * 60 * 60 * 24));
+    const total = diffDias * room.precio;
+
+    const newReservation = new Reservation({ ...req.body, total });
     await newReservation.save();
     res.status(201).json({
       mensaje: "Reserva creada con éxito",

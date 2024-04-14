@@ -56,7 +56,7 @@ DELETE /user/:id
 ```
 GET /reservation
 GET /reservation/:id
-GET /reservation/:numero
+GET /reservation/forroom/:numero
 POST /reservation
 DELETE /reservation/:id
 ```
