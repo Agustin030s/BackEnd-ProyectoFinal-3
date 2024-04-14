@@ -13,18 +13,26 @@ const reservationValidation = [
     .isNumeric()
     .withMessage("El DNI debe ser un valor numerico")
     .custom((value) => {
-      const numberAsString = String(value);
-      const numberLength = numberAsString.length;
-      return numberLength >= 7 && numberLength <= 8;
+      if (value >= 8 && value <= 10) {
+        return true;
+      } else {
+        throw new Error("El dni debe tener entre 8 y 10 números");
+      }
     })
-    .withMessage("El DNI debe tener entre 7 y 8 dígitos"),
+    .withMessage("El DNI debe tener entre 8 y 10 dígitos"),
   check("telefono")
     .notEmpty()
     .withMessage("El telefono es un dato obligatorio")
     .isNumeric()
     .withMessage("El telefono debe ser un valor numerico")
-    .isMobilePhone("any")
-    .withMessage("El telefono debe der un numero valido"),
+    .custom((value) => {
+      if (value >= 7 && value <= 15) {
+        return true;
+      } else {
+        throw new Error("El telefono debe tener entre 7 y 15 números");
+      }
+    })
+    .withMessage("El telefono debe tener entre 7 y 15 números"),
   check("email")
     .notEmpty()
     .withMessage("El email es un dato obligatorio")
@@ -79,6 +87,17 @@ const reservationValidation = [
     .withMessage(
       "La fecha de fin debe ser igual o posterior a la fecha actual"
     ),
+  check("total")
+    .notEmpty()
+    .withMessage("El total es obligatorio")
+    .custom((value) => {
+      if (value >= 4000 && value <= 20000000) {
+        return true;
+      } else {
+        throw new Error("El total debe ser entre 4 mil y 20 millones");
+      }
+    })
+    .withMessage("El total debe ser entre 4 mil y 20 millones"),
   (req, res, next) => validationResultFunction(req, res, next),
 ];
 
