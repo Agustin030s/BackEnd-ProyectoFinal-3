@@ -8,14 +8,14 @@ const reservationSchema = new Schema({
     maxLength: 80,
   },
   dni: {
-    type: Number,
+    type: String,
     required: true,
     min: 8,
     max: 10,
     unique: true,
   },
   telefono: {
-    type: Number,
+    type: String,
     required: true,
     min: 7,
     max: 15,
@@ -47,7 +47,7 @@ const reservationSchema = new Schema({
     type: Number,
     required: true,
     min: 4000,
-    max: 10000000,
+    max: 20000000,
   },
   numHabitacion: {
     type: Number,
