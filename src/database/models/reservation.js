@@ -12,7 +12,6 @@ const reservationSchema = new Schema({
     required: true,
     min: 8,
     max: 10,
-    unique: true,
   },
   telefono: {
     type: String,
@@ -33,7 +32,6 @@ const reservationSchema = new Schema({
       },
       message: (props) => `${props.value} no es un email válido`,
     },
-    unique: true,
   },
   fechaInicio: {
     type: Date,
