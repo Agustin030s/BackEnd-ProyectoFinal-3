@@ -8,16 +8,23 @@ const reservationSchema = new Schema({
     maxLength: 80,
   },
   dni: {
-    type: String,
+    type: Number,
     required: true,
-    min: 8,
-    max: 10,
+    min: 1000000,
+    max: 99999999,
   },
   telefono: {
-    type: String,
+    type: Number,
     required: true,
-    min: 7,
-    max: 15,
+    validate: {
+      validator: (value) => {
+        const pattern =
+          /^((\+54\s?)?(\s?9\s?)?\d{2,3}[\s-]?\d{3,4}-?\d{3,4}|\d{10,11}|(\d{3,4}[\s-]){1,2}\d{3,4})$/g;
+        return pattern.test(value);
+      },
+      message: (props) =>
+        `${props.value} debe ser un formato de telefono valido`,
+    },
   },
   email: {
     type: String,

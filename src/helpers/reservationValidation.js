@@ -12,15 +12,17 @@ const reservationValidation = [
     .withMessage("El DNI es un dato obligatorio")
     .isNumeric()
     .withMessage("El DNI debe ser un valor numerico")
-    .isLength({ min: 8, max: 10 })
-    .withMessage("El DNI debe tener entre 8 y 10 dígitos"),
+    .matches(/^\d{7,8}$/)
+    .withMessage("Debe tener 7 u 8 caracteres"),
   check("telefono")
     .notEmpty()
     .withMessage("El telefono es un dato obligatorio")
     .isNumeric()
     .withMessage("El telefono debe ser un valor numerico")
-    .isLength({ min: 7, max: 15 })
-    .withMessage("El telefono debe tener entre 7 y 15 números"),
+    .matches(
+      /^((\+54\s?)?(\s?9\s?)?\d{2,3}[\s-]?\d{3,4}-?\d{3,4}|\d{10,11}|(\d{3,4}[\s-]){1,2}\d{3,4})$/g
+    )
+    .withMessage("Debe tener un formato de teledono valido"),
   check("email")
     .notEmpty()
     .withMessage("El email es un dato obligatorio")
