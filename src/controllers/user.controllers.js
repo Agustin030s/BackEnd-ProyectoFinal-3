@@ -109,10 +109,15 @@ export const deleteUser = async (req, res) => {
   try {
     const id = req.params.id;
     const searchedUser = await User.findById(id);
-
     if (!searchedUser) {
       return res.status(404).json({
         message: "No se encontro el usuario buscado",
+      });
+    }
+
+    if (searchedUser.rol === "Administrador") {
+      return res.status(403).json({
+        message: "No tienes permisos para eliminar a este usuario",
       });
     }
 
