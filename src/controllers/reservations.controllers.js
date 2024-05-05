@@ -14,7 +14,7 @@ export const reserveRoom = async (req, res) => {
     const currentDate = new Date();
     const initReserve = new Date(fechaInicio);
     const finishReserve = new Date(fechaFin);
-    if (initReserve < currentDate)
+    if (initReserve < currentDate && initReserve.getDate() !== currentDate.getDate())
       return res.status(400).json({
         mensaje:
           "La fecha de inicio de la reserva no puede ser menor a la fecha actual",
