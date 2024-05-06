@@ -20,7 +20,6 @@ const userSchema = new Schema({
       },
       message: (props) => `${props.value} no es un email válido`,
     },
-    unique: true,
   },
   password: {
     type: String,

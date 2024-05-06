@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   deleteReservation,
+  editReservationById,
   getReservationById,
   getReservationForARoom,
   getReservations,
@@ -18,7 +19,8 @@ router
 router
   .route("/reservation/:id")
   .get(getReservationById)
-  .delete([JWTValidation], deleteReservation);
+  .delete([JWTValidation], deleteReservation)
+  .put([JWTValidation], editReservationById)
 router.route("/reservation/forroom/:numero").get(getReservationForARoom);
 
 export default router;
