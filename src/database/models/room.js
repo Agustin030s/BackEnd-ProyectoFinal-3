@@ -6,7 +6,6 @@ const roomSchema = new Schema({
     required: true,
     min: 1,
     max: 30,
-    unique: true,
   },
   tipoHabitacion: {
     type: String,

@@ -14,7 +14,7 @@ export const reserveRoom = async (req, res) => {
     const currentDate = new Date();
     const initReserve = new Date(fechaInicio);
     const finishReserve = new Date(fechaFin);
-    if (initReserve < currentDate)
+    if (initReserve < currentDate && initReserve.getDate() !== currentDate.getDate())
       return res.status(400).json({
         mensaje:
           "La fecha de inicio de la reserva no puede ser menor a la fecha actual",
@@ -117,3 +117,28 @@ export const getReservationById = async (req, res) => {
     });
   }
 };
+
+export const editReservationById = async (req,res) =>{
+  try {
+    const id = req.params.id;
+    const searchedReservation = await Reservation.findById(id)
+    if (!searchedReservation) {
+      return res.status(404).json({
+        message: "No se encontro la reserva buscada",
+      });
+    }
+
+
+    await Reservation.findByIdAndUpdate(id, body);
+    res
+      .status(200)
+      .json({ message: "La reserva fue modificada correctamente" });
+  } catch (error) {
+    console.error(
+      `El siquiente error ocurrio al intentar modificar la reserva: ${error}`
+    );
+    res.status(404).json({
+      mensaje: "Ocurrio un error al intentar modificar la reserva",
+    });
+  }
+}
