@@ -14,7 +14,10 @@ export const reserveRoom = async (req, res) => {
     const currentDate = new Date();
     const initReserve = new Date(fechaInicio);
     const finishReserve = new Date(fechaFin);
-    if (initReserve < currentDate && initReserve.getDate() !== currentDate.getDate())
+    if (
+      initReserve < currentDate &&
+      initReserve.getDate() !== currentDate.getDate()
+    )
       return res.status(400).json({
         mensaje:
           "La fecha de inicio de la reserva no puede ser menor a la fecha actual",
@@ -118,18 +121,51 @@ export const getReservationById = async (req, res) => {
   }
 };
 
-export const editReservationById = async (req,res) =>{
+export const editReservationById = async (req, res) => {
   try {
+    const { numHabitacion, fechaInicio, fechaFin } = req.body;
     const id = req.params.id;
-    const searchedReservation = await Reservation.findById(id)
+    const room = await Room.findOne({ numero: numHabitacion });
+    const searchedReservation = await Reservation.findById(id);
     if (!searchedReservation) {
       return res.status(404).json({
         message: "No se encontro la reserva buscada",
       });
     }
 
+    const currentDate = new Date();
+    const initReserve = new Date(fechaInicio);
+    const finishReserve = new Date(fechaFin);
+    if (
+      initReserve < currentDate &&
+      initReserve.getDate() !== currentDate.getDate()
+    )
+      return res.status(400).json({
+        mensaje:
+          "La fecha de inicio de la reserva no puede ser menor a la fecha actual",
+      });
+    if (finishReserve <= initReserve)
+      return res.status(400).json({
+        mensaje:
+          "La fecha de fin no puede ser menor o igual a la fecha de inicio",
+      });
 
-    await Reservation.findByIdAndUpdate(id, body);
+    const overlappingReservation = await Reservation.findOne({
+      numHabitacion,
+      fechaInicio: { $lte: fechaFin },
+      fechaFin: { $gte: fechaInicio },
+    });
+    if (overlappingReservation) {
+      return res.status(400).json({
+        mensaje: "Ya existe una reserva en las fechas seleccionadas",
+      });
+    }
+
+    const diffTiempo = Math.abs(finishReserve - initReserve);
+    const diffDias = Math.ceil(diffTiempo / (1000 * 60 * 60 * 24));
+    const total = diffDias * room.precio;
+
+    await Reservation.findByIdAndUpdate(id, { ...req.body, total });
     res
       .status(200)
       .json({ message: "La reserva fue modificada correctamente" });
@@ -141,4 +177,4 @@ export const editReservationById = async (req,res) =>{
       mensaje: "Ocurrio un error al intentar modificar la reserva",
     });
   }
-}
+};
